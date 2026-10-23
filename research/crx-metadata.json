@@ -1,0 +1,98 @@
+{
+  "gofullpage": {
+    "url": "https://clients2.google.com/service/update2/crx?response=redirect&prodversion=130.0.0.0&acceptformat=crx2,crx3&x=id%3Dfdpohaocaechififmbbbbbknoalclacl%26uc",
+    "bytes": 920018,
+    "sha256": "8c573c71700f577d91262d50f4f528205707cbfc548129c4a6e96134d8563ed7",
+    "files": 157,
+    "manifest": {
+      "manifest_version": 3,
+      "version": "8.10",
+      "permissions": [
+        "activeTab",
+        "scripting",
+        "storage",
+        "unlimitedStorage"
+      ],
+      "optional_permissions": [
+        "downloads",
+        "tabs",
+        "webNavigation"
+      ],
+      "host_permissions": null,
+      "optional_host_permissions": [
+        "<all_urls>",
+        "file://*/*"
+      ],
+      "background": {
+        "service_worker": "js/background/index.js"
+      },
+      "action": {
+        "default_icon": "images/icon-999.png",
+        "default_popup": "popup.html"
+      },
+      "content_scripts": null,
+      "externally_connectable": null
+    }
+  },
+  "tablecapture": {
+    "url": "https://clients2.google.com/service/update2/crx?response=redirect&prodversion=130.0.0.0&acceptformat=crx2,crx3&x=id%3Diebpjdmgckacbodjpijphcplhebcmeop%26uc",
+    "bytes": 7029185,
+    "sha256": "299c7be04fd931a9bdf045e61d2bc6fd6e83b6c5d4c42fa58e8be1d1f7a36082",
+    "files": 129,
+    "manifest": {
+      "manifest_version": 3,
+      "version": "11.0.45",
+      "permissions": [
+        "contextMenus",
+        "storage",
+        "tabs",
+        "webNavigation"
+      ],
+      "optional_permissions": [
+        "identity",
+        "userScripts",
+        "downloads"
+      ],
+      "host_permissions": [
+        "<all_urls>"
+      ],
+      "optional_host_permissions": null,
+      "background": {
+        "service_worker": "src/app/background.js",
+        "type": "module"
+      },
+      "action": {
+        "title": "__MSG_extensionName__",
+        "default_title": "__MSG_extensionName__",
+        "default_popup": "popup.html",
+        "default_icon": {
+          "128": "src/assets/favicon-128x128.png"
+        }
+      },
+      "content_scripts": [
+        {
+          "run_at": "document_start",
+          "matches": [
+            "<all_urls>"
+          ],
+          "exclude_matches": [],
+          "js": [
+            "src/app/content.js"
+          ],
+          "css": [
+            "src/styles/lib/hint.min.css",
+            "src/styles/style-content.css"
+          ],
+          "all_frames": true,
+          "match_about_blank": true
+        }
+      ],
+      "externally_connectable": {
+        "matches": [
+          "*://georgemike.com/*",
+          "*://www.georgemike.com/*"
+        ]
+      }
+    }
+  }
+}

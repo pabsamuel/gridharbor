@@ -1,41 +1,15 @@
 {
-  "name": "copytables",
-  "version": "0.5.10",
-  "description": "Chrome extension to select and copy table cells.",
-  "scripts": {
-    "chrome": "'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --enable-logging=stderr --v=1 2>&1 | node read-log.js",
-    "dev": "NODE_ENV=dev gulp make",
-    "watch": "NODE_ENV=dev gulp watch --url",
-    "dev-server": "node ./test/server/index.js",
-    "production": "NODE_ENV=production gulp make",
-    "deploy": "NODE_ENV=production gulp deploy",
-    "test": "jasmine --config=./test/jasmine.json"
-
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gebrkn/copytables.git"
-  },
-  "author": "Georg Barikin",
+  "name": "gridharbor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local MV3 table workbench fork of gebrkn/copytables",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gebrkn/copytables/issues"
+  "scripts": {
+    "test": "node --test tests/core.test.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "package": "python tools/package.py"
   },
-  "homepage": "https://github.com/gebrkn/copytables#readme",
   "devDependencies": {
-    "del": "^2.2.2",
-    "express": "^4.15.2",
-    "glob": "^7.1.1",
-    "gulp": "^3.9.1",
-    "gulp-clip-empty-files": "^0.1.2",
-    "gulp-pug": "^3.3.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-uglify": "^2.1.0",
-    "gulp-util": "^3.0.8",
-    "jasmine": "^3.3.1",
-    "mustache": "^2.3.0",
-    "vinyl-named": "^1.1.0",
-    "webpack-stream": "^3.2.0"
+    "playwright": "1.61.1"
   }
 }
