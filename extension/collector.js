@@ -69,6 +69,12 @@
       if (total > LIMIT || results.length >= 100) throw new Error('Page exceeds the 100,000-cell / 100-table safety limit. Use a narrower page or list selector.');
       const rect = matrix.map(row => Array.from({length:maxWidth}, (_,i) => row[i] ?? ''));
       if(rect.some(r=>r.some(v=>/[\w.+-]+@[\w.-]+\.[a-z]{2,}/i.test(v)))||tbl.querySelector('a[href^="mailto:"],a[href^="tel:"]'))throw new Error('Contact information cannot be captured. Choose a non-contact page.');
+      // Conservative directory guard: paired identity/contact column semantics,
+      // not bare numeric values that would reject ordinary inventory tables.
+      const headers=rect[0].map(v=>v.trim().toLocaleLowerCase('en').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' '));
+      const identity=/^(full name|name|contact name|customer name|person|isim|ad|ad soyad|ad[?i] soyad[?i]|musteri ad[?i])$/;
+      const contact=/^(phone|phone number|telephone|telephone number|mobile|mobile number|tel|email|e-mail|address|postal address|telefon|telefon numaras[?i]|cep telefonu|eposta|e-posta|adres)$/;
+      if(rect.length>1&&headers.some(v=>identity.test(v))&&headers.some(v=>contact.test(v)))throw new Error('Contact directories cannot be captured. Choose a non-contact page.');
       if (!rect.some(row => row.some(Boolean))) continue;
       const label = strip(tbl.getAttribute('aria-label') || tbl.querySelector('caption')?.textContent || `Table ${results.length+1}`).slice(0,120);
       results.push({label,rows:rect,warnings: isHTML ? [] : ['Only rendered ARIA rows are captured. Virtualized or unloaded rows are not available.']});

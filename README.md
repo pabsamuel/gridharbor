@@ -25,3 +25,5 @@ Node 24+: `node --test tests/core.test.mjs` (5 tests). Browser: `npm install --i
 `node tools/license.mjs init` was run once. The signing key is only in ignored .secrets/; never upload it. The public verifier ships. After verifying a real paid Paddle transaction in the existing dashboard, set C01_LICENSE_OUTPUT to a local .key path and run `node tools/license.mjs issue txn_VERIFIEDORDER lifetime`. No Paddle secret is present in the extension and no API/server is required. Keep private signing key safely backed up; losing it prevents issuing compatible keys. Existing lifetime licenses cannot be remotely revoked.
 
 Product / privacy / support URLs are listed in SUBMIT.md. They do not imply store availability.
+
+Directory safeguard: English/Turkish paired identity and contact column headings (for example Name + Phone, Ad Soyad + Telefon) reject obvious directories. Bare inventory numbers are allowed. Headerless or unusual contact content cannot be classified reliably; capture only non-contact material.

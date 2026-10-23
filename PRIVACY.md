@@ -9,3 +9,5 @@ Use Delete local data to remove captures, recipes, view state and the saved key.
 Purchases are not active. Any future user-initiated Paddle website checkout is separate and governed by its displayed terms; the extension receives no payment-card data. Future manual activation uses a locally verified signed key.
 
 Support: support@atesensoftware.com. Include a fictional reproduction and version; never send private captures, passwords or license keys.
+
+Directory safeguard: English/Turkish paired identity and contact column headings (for example Name + Phone, Ad Soyad + Telefon) reject obvious directories. Bare inventory numbers are allowed. Headerless or unusual contact content cannot be classified reliably; capture only non-contact material.
