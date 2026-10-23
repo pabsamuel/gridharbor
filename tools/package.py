@@ -9,7 +9,10 @@ for entry in ('workbench.html','workbench.js','workbench.css','license.js','publ
 archive=out/'gridharbor-0.1.0.zip'
 with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as z:
  for name,p in sorted(files.items()):
-  info=zipfile.ZipInfo(name,(2026,10,23,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;info.external_attr=0o644<<16;z.writestr(info,p.read_bytes())
+  info=zipfile.ZipInfo(name,(2026,10,23,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;info.external_attr=0o644<<16
+  raw=p.read_bytes()
+  if not name.lower().endswith(('.png','.jpg','.webp','.gif','.ico')):raw=raw.replace(b'\r\n',b'\n')
+  z.writestr(info,raw)
 with zipfile.ZipFile(archive) as z:
  assert z.testzip() is None
  assert not any(x.startswith(('.secrets','tests','research')) or x.endswith(('.key','.jwk')) for x in z.namelist())

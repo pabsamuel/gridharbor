@@ -13,3 +13,5 @@ Independent QA separately reran 5/5 Node + Chromium harness successfully. Remove
 Follow-up: ephemeral-key positive Pro integration proves UI activation, persistence, fourth recipe and byte-exact three-table batch CSV output. Paired English/Turkish identity/contact header guard closes obvious Name+Phone directory gap while allowing inventory quantities. Final runtime ZIP rebuilt (16 files, 16044 bytes, SHA256 4be7b3944c4390d0efc60683a50a8aa9724060935405670496bc9be663e25542); 5 Node tests and browser suite pass.
 
 Final concrete privacy fix: reproduced contenteditable ancestor capture, excluded editable ancestor tables, regression + full Chromium pass. Rebuilt final ZIP 16049 bytes SHA256 91afbf7b6d84e8e043e8bf4b97230120768c9184db5a35f3496a6b47ae759b90.
+
+Cross-check: Turkish dotless-i headers were not rejected because U+0131 does not decompose in NFD. Fold ı to i and treat adi like ad. Pack text as LF. Rebuilt ZIP 16067 bytes SHA256 bab33f4576782e4d0c121d8252e8b24575cdbd40405b2707ddce8cccf971c980. Node 5/5 and Chromium harness passed again.

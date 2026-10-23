@@ -71,8 +71,9 @@
       if(rect.some(r=>r.some(v=>/[\w.+-]+@[\w.-]+\.[a-z]{2,}/i.test(v)))||tbl.querySelector('a[href^="mailto:"],a[href^="tel:"]'))throw new Error('Contact information cannot be captured. Choose a non-contact page.');
       // Conservative directory guard: paired identity/contact column semantics,
       // not bare numeric values that would reject ordinary inventory tables.
-      const headers=rect[0].map(v=>v.trim().toLocaleLowerCase('en').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' '));
-      const identity=/^(full name|name|contact name|customer name|person|isim|ad|ad soyad|ad[?i] soyad[?i]|musteri ad[?i])$/;
+      // U+0131 does not decompose in NFD; fold it so adı/numarası headers hit the patterns below.
+      const headers=rect[0].map(v=>v.trim().toLocaleLowerCase('en').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\u0131/g,'i').replace(/\s+/g,' '));
+      const identity=/^(full name|name|contact name|customer name|person|isim|ad|adi|ad soyad|ad[?i] soyad[?i]|musteri ad[?i])$/;
       const contact=/^(phone|phone number|telephone|telephone number|mobile|mobile number|tel|email|e-mail|address|postal address|telefon|telefon numaras[?i]|cep telefonu|eposta|e-posta|adres)$/;
       if(rect.length>1&&headers.some(v=>identity.test(v))&&headers.some(v=>contact.test(v)))throw new Error('Contact directories cannot be captured. Choose a non-contact page.');
       if (!rect.some(row => row.some(Boolean))) continue;
