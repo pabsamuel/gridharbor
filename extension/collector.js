@@ -37,7 +37,7 @@
       if(rows.some(r=>r.some(v=>/[\w.+-]+@[\w.-]+\.[a-z]{2,}/i.test(v)))||nodes.some(n=>n.matches('a[href^="mailto:"],a[href^="tel:"]')||n.querySelector('a[href^="mailto:"],a[href^="tel:"]')))throw new Error('Contact information cannot be captured. Choose a non-contact list.');
       return [{label:'Selected list', rows, warnings:[]}];
     }
-    nodes = toArray(document.querySelectorAll('table,[role="table"],[role="grid"]')).filter(n => visible(n) && !n.closest('form,address') && !n.parentElement?.closest('table,[role="table"],[role="grid"]'));
+    nodes = toArray(document.querySelectorAll('table,[role="table"],[role="grid"]')).filter(n => visible(n) && !n.closest('form,address,[contenteditable]') && !n.parentElement?.closest('table,[role="table"],[role="grid"]'));
     let total = 0;
     const results = [];
     for (const tbl of nodes) {
